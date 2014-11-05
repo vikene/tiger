@@ -1,0 +1,5 @@
+nasm -f aout -o start.o boot_code.asm
+
+ld -T link.ld -o  start.o
+
+

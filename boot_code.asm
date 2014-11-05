@@ -30,6 +30,8 @@ mboot:
     
 ; endless loop
     stublet:
+        extern main
+        call main
         jmp $
 
 ;GDT init - todo

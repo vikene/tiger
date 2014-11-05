@@ -36,6 +36,8 @@ void outportb(unsigned short _port,unsigned char _data)
 }
 int  main()
 {
+    init_video();
+    puts("Hello world");
     for(;;);
     return 0;
 }

@@ -2,26 +2,34 @@
 /*library routines .. 
 */
 /* You will need to code these up yourself!  */
-unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count)
+void *memcpy(void *dest, const void *src, int count)
 {
-   return 0;
+    const char *sp = (const char *)src;
+    char *dp = (char *)dest;
+    for(; count != 0; count--) *dp++ = *sp++;
+    return dest;
 }
 
-unsigned char *memset(unsigned char *dest, unsigned char val, int count)
+void *memset(void *dest, char val, int count)
 {
-   return 0; 
+    char *temp = (char *)dest;
+    for( ; count != 0; count--) *temp++ = val;
+    return dest;
 }
 
 unsigned short *memsetw(unsigned short *dest, unsigned short val, int count)
 {
-   return 0;
+    unsigned short *temp = (unsigned short *)dest;
+    for( ; count != 0; count--) *temp++ = val;
+    return dest;
 }
 
 int strlen(const char *str)
 {
-    return 0;
+    int retval;
+    for(retval = 0; *str != '\0'; str++) retval++;
+    return retval;
 }
-
 
 unsigned char inportb (unsigned short _port)
 {
@@ -30,10 +38,11 @@ unsigned char inportb (unsigned short _port)
     return rv;
 }
 
-void outportb(unsigned short _port,unsigned char _data)
+void outportb (unsigned short _port, unsigned char _data)
 {
-         __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
+    __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
 }
+
 int  main()
 {
     init_video();

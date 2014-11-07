@@ -36,7 +36,7 @@ mboot:
 
 ;GDT init 
 
-global gdt_flush
+global _gdt_flush
 extern gp
 
 gdt_flush:
